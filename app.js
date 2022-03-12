@@ -8,8 +8,8 @@ app.use(bodyParser.json());
  
 //create database connection
 const conn = mysql.createConnection({
-  host: 'uat-mysqld',
-  user: 'mysql-user',
+  host: 'dev-mysqldb',
+  user: 'mysqluser',
   password: 'root1234',
   database: 'hello_world'
 });
