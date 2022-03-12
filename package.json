@@ -1,0 +1,15 @@
+{
+  "name": "docker-app",
+  "version": "1.0.0",
+  "description": "Node.js on Docker",
+  "author": "Desmond Lim",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.16.1",
+    "mysql":   "^2.18.1",
+    "body-parser": "^1.19.0"
+  }
+}
