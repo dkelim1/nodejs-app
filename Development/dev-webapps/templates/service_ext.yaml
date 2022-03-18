@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.devwebapps.name_ext }}
+  namespace: {{ .Values.devwebapps.namespace }}
+  labels: 
+    group: {{ .Values.devwebapps.group }}
+spec:
+  type: {{ .Values.devwebapps.service_ext.type }}
+  selector:             
+    app: {{ .Values.devwebapps.name }}
+  ports:
+    - port: {{ .Values.devwebapps.service_ext.port }}       
+      targetPort: {{ .Values.devwebapps.container.port }}    
+      nodePort: {{ .Values.devwebapps.service_ext.nodePort }}    

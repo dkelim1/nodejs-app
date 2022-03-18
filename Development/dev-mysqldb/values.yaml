@@ -1,0 +1,23 @@
+replicaCount: 1
+devmysqldb:
+  name: dev-mysqldb
+  group: db
+  container:
+    image: mysql/mysql-server
+    port: 3306
+  service:
+    type: ClusterIP
+    port: 3306
+  volume:
+    name: dev-mysqldb-storage
+    kind: PersistentVolumeClaim
+    mountPath: /var/lib/mysql
+    pvc:
+      name: dev-mysqldb-persistent-volume-claim
+      accessMode: ReadWriteOnce
+      storage: 4Gi
+  config:
+    name: dev-mysqldb-config
+    data:
+       - key: key
+         value: value

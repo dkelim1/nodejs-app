@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.devmysqldb.name }}
+  labels:
+    app: {{ .Values.devmysqldb.name }}
+    group: {{ .Values.devmysqldb.group }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.devmysqldb.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.devmysqldb.name }}
+        group: {{ .Values.devmysqldb.group }}
+    spec:
+      volumes:
+        - name: {{ .Values.devmysqldb.volume.name }}
+          persistentVolumeClaim:
+            claimName: {{ .Values.devmysqldb.volume.pvc.name }}
+      containers:
+        - name: {{ .Values.devmysqldb.name }}
+          image: {{ .Values.devmysqldb.container.image }}  
+          ports:
+            - containerPort: {{ .Values.devmysqldb.container.port }}
+          volumeMounts:             
+            - name: {{ .Values.devmysqldb.volume.name }}
+              mountPath: {{ .Values.devmysqldb.volume.mountPath }} 

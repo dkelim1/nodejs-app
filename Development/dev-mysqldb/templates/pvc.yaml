@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: {{ .Values.devmysqldb.volume.kind }}
+metadata:
+  name: {{ .Values.devmysqldb.volume.pvc.name }}
+spec:
+  accessModes:
+    - {{ .Values.devmysqldb.volume.pvc.accessMode }}
+  resources:
+    requests:
+      storage: {{ .Values.devmysqldb.volume.pvc.storage }}

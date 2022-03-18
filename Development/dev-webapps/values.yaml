@@ -1,0 +1,17 @@
+devwebapps:
+  name: dev-webapps
+  namespace: dev
+  group: app
+  replicaCount: 3
+  container:
+    image: dkelim1/dockers-app:dev-webapps
+    pullPolicy: Always
+    port: 80
+  service:
+    type: ClusterIP
+    port: 80
+  name_ext: dev-webapps-ext
+  service_ext:
+    type: NodePort
+    port: 80
+    nodePort: 30080

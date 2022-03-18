@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.devwebapps.name }}
+  namespace: {{ .Values.devwebapps.namespace }}
+  labels:
+    app: {{ .Values.devwebapps.name }}
+    group: {{ .Values.devwebapps.group }}
+spec:
+  replicas: {{ .Values.devwebapps.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.devwebapps.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.devwebapps.name }}
+        group: {{ .Values.devwebapps.group }}
+    spec:
+    {{- if .Values.devwebapps.imagePullSecrets }}
+      imagePullSecrets:
+      - name: {{ .Values.devwebapps.imagePullSecrets }}
+    {{- end }}
+      containers:
+        - name: {{ .Values.devwebapps.name }}
+          image: {{ .Values.devwebapps.container.image }}  
+          imagePullPolicy: {{ .Values.devwebapps.container.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.devwebapps.container.port }}

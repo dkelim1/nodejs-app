@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.devmysqldb.config.name }}
+  labels:
+    group: {{ .Values.devmysqldb.group }}
+data: 
+{{- range .Values.devmysqldb.config.data }}
+  {{ .key }}: {{ .value }}
+{{- end}}
