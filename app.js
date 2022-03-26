@@ -4,7 +4,7 @@ const app = express();
 const mysql = require('mysql');
 
 require('dotenv').config()
-//console.log(process.env) // remove this after you've confirmed it working
+console.log(process.env) // remove this after you've confirmed it working
  
 // parse application/json
 app.use(bodyParser.json());
