@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const mysql = require('mysql');
 
-require('dotenv').config()
+require('dotenv').config({ debug: true })
 console.log(process.env) // remove this after you've confirmed it working
  
 // parse application/json
