@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 const conn = mysql.createConnection({
   host: 'dev-mysqldb',
   user: 'mysqluser',
-  password: 'process.env.PASSWORD',
+  password: process.env.PASSWORD,
   database: 'hello_world'
 });
  
