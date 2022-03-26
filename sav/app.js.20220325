@@ -2,9 +2,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const mysql = require('mysql');
-
-require('dotenv').config()
-console.log(process.env) // remove this after you've confirmed it working
  
 // parse application/json
 app.use(bodyParser.json());
@@ -13,7 +10,7 @@ app.use(bodyParser.json());
 const conn = mysql.createConnection({
   host: 'dev-mysqldb',
   user: 'mysqluser',
-  password: 'process.env.PASSWORD',
+  password: 'root1234',
   database: 'hello_world'
 });
  
